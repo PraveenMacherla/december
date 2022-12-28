@@ -1,0 +1,95 @@
+{
+	"name": "15 Until 3",
+	"properties": {
+		"activities": [
+			{
+				"name": "Until1",
+				"type": "Until",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@greater(variables('varinit'),variables('varincrement'))",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "01 copy data",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "Set variable2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "01 copy data",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						},
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "varinit",
+								"value": {
+									"value": "@variables('varincrement')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Set variable2",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Set variable1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "varincrement",
+								"value": {
+									"value": "@string(add(int(variables('varinit')),1))",
+									"type": "Expression"
+								}
+							}
+						}
+					],
+					"timeout": "0.12:00:00"
+				}
+			}
+		],
+		"variables": {
+			"varinit": {
+				"type": "String",
+				"defaultValue": "1"
+			},
+			"varincrement": {
+				"type": "String",
+				"defaultValue": "1"
+			},
+			"varuntil": {
+				"type": "String",
+				"defaultValue": "4"
+			}
+		},
+		"folder": {
+			"name": "01"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-12-21T16:20:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

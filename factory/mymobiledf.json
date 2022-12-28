@@ -1,0 +1,14 @@
+{
+	"name": "mymobiledf",
+	"properties": {
+		"globalConfigurations": {
+			"PipelineBillingEnabled": "true"
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d6a2b7d9-3b78-4ea5-bdce-416cc736e42a",
+		"tenantId": "1079e4cc-fd42-4a29-ba65-0542f357804f"
+	}
+}

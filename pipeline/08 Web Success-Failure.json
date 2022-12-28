@@ -1,0 +1,127 @@
+{
+	"name": "08 Web Success-Failure",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "salesorderdetailds",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "salesorderdetaildestinationds",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "On Failure",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": " https://prod-09.centralindia.logic.azure.com:443/workflows/75dcad5ec9f6 4704a287aeb493238eae/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2 Ftriggers%2Fmanual%2Frun&sv=1.0&sig=xfq0myi9xmeo00sOhfdT5Y4pHzOh1zECWhNAbjQoqzs",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"SuccessMessage": " Current pipeline Failed",
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "pipeline().pipeline",
+						"Subject": "Pipeline finished!",
+						"emailto": "162g1a0434@gmail.com"
+					}
+				}
+			},
+			{
+				"name": "On Success",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-09.centralindia.logic.azure.com:443/workflows/75dcad5ec9f64704a287aeb493238eae/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=xfq0myi9xmeo00sOhfdT5Y4pHzOh1zECWhNAbjQoqzs",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"SuccessMessage": " Current pipeline run successfully",
+						"DataFactoryName": "@{pipeline().DataFactory}",
+						"PipelineName": "pipeline().pipeline",
+						"Subject": "Pipeline finished!",
+						"emailto": "prasad17061998@gmail.com"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "01"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-12-27T04:54:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

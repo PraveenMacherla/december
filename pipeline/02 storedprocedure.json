@@ -1,0 +1,35 @@
+{
+	"name": "02 storedprocedure",
+	"properties": {
+		"description": "this pipeline copies data from salesorderdetail to salesorderdetail_destination",
+		"activities": [
+			{
+				"name": "02 storedprocedure",
+				"description": "this activity copies data from salesorderdetail to salesorderdetail_destination",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:03:00",
+					"retry": 2,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_salesorderdetails]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "01"
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-12-21T07:29:35Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,50 @@
+{
+	"name": "AzureSqlTable5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Username",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Identifier",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Onetimepassword",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Recoverycode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Firstname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Lastname",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Department",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Location",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "UserData_Destination"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

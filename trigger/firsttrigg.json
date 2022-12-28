@@ -1,0 +1,25 @@
+{
+	"name": "firsttrigg",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "01 copy data",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-12-29T00:02:00",
+				"endTime": "2023-01-03T09:39:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

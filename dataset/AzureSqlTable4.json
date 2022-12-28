@@ -1,0 +1,41 @@
+{
+	"name": "AzureSqlTable4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "sno",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "playername",
+				"type": "nvarchar"
+			},
+			{
+				"name": "team",
+				"type": "nvarchar"
+			},
+			{
+				"name": "noof50",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "runs",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "crickerscores_Destination"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

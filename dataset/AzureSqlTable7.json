@@ -1,0 +1,31 @@
+{
+	"name": "AzureSqlTable7",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "sno",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "columnslist",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tablenamelist",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "lookuptabledetails"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,59 @@
+{
+	"name": "AzureSqlTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "MatchNo",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "GroupTypeSemiFinalFinal",
+				"type": "varchar"
+			},
+			{
+				"name": "MatchBetween",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Venue",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WinningTeamScore",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LosingTeamScore",
+				"type": "nvarchar"
+			},
+			{
+				"name": "WinnerTeam",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Result",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PlayerOfTheMatch",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "cricketwc2007_Destination"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
